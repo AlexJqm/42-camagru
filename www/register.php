@@ -47,9 +47,20 @@
 
 <?php
 	if (isset($_POST['register'])) {
+		mkdir
 		$customer_user = $_POST['username'];
 		$customer_email = $_POST['email'];
 		$customer_password = $_POST['password'];
+		$customer_get = "SELECT * FROM customers";
+		$customer_run = mysqli_query($con, $customer_get);
+		// Check double username or email in database
+		while ($customer_row = mysqli_fetch_array($customer_run)) {
+			if ($customer_row['customer_user'] == $customer_user)
+				exit ("<script>window.open('index.php?register=error','_self')</script>");
+			if ($customer_row['customer_email'] == $customer_email)
+				exit ("<script>window.open('index.php?register=error','_self')</script>");
+		}
+		// Check password confirm
 		if ($customer_password != $_POST['password2'])
 			exit ("<script>alert('Erreur dans le mot de passe.')</script>");
 		$customer_insert = "INSERT INTO customers (customer_user, customer_email, customer_password)

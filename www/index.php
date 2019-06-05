@@ -51,15 +51,22 @@
 					<li class="nav-item">
 						<a class="nav-link" href="index.php?profil">Mon profil</a>
 					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="index.php?logout">Deconnexion</a>
-					</li>
 					<?php } ?>
 				</ul>
 				<form class="form-inline my-2 my-lg-0">
 					<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
 					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 				</form>
+				<?php if ($_SESSION['customer_user'] != NULL) { ?>
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a class="nav-link" href="index.php?account">Mon compte</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="index.php?logout">Deconnexion</a>
+					</li>
+				</ul>
+				<?php } ?>
 			</div>
 		</nav>
 
@@ -68,6 +75,10 @@
 				include("login.php");
 			if (isset($_GET['register']))
 				include("register.php");
+			if (isset($_GET['profil']))
+				include("profil.php");
+			if (isset($_GET['account']))
+				include("account.php");
 			if (isset($_GET['logout']))
 				include("logout.php");
 		?>
