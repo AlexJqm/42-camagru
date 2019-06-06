@@ -1,3 +1,4 @@
+<?php echo get_current_user(); ?>
 <form action="" method="post" enctype="multipart/form-data">
 	<p>Images:
 		<input type="file" name="userfile" />
@@ -8,7 +9,7 @@
 <?php
 	if (file_exists("../uploalds") == false)
 		mkdir ("../uploalds", 0777);
-	$uploaddir = '../uploalds';
+	$uploaddir = "../uploalds";
 	$uploadfile = $uploaddir . "/" . basename($_FILES['userfile']['tmp_name'] . "." . basename($_FILES['userfile']['type']));
 
 	echo '<pre>';

@@ -38,8 +38,12 @@
 
 	$create_table_customers = "CREATE TABLE customers
 		(customer_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-		customer_user VARCHAR(255),
+		customer_user VARCHAR(32),
 		customer_email TEXT,
-		customer_password VARCHAR(255));";
+		customer_password VARCHAR(64),
+		customer_ln VARCHAR(32),
+		customer_fn VARCHAR(32),
+		customer_bio TEXT,
+		customer_img TEXT);";
 	query_table($db_link, "customers", $create_table_customers);
 ?>

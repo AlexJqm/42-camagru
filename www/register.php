@@ -47,12 +47,11 @@
 
 <?php
 	if (isset($_POST['register'])) {
-		mkdir
 		$customer_user = $_POST['username'];
 		$customer_email = $_POST['email'];
 		$customer_password = $_POST['password'];
-		$customer_get = "SELECT * FROM customers";
-		$customer_run = mysqli_query($con, $customer_get);
+		$customer_select = "SELECT * FROM customers";
+		$customer_run = mysqli_query($con, $customer_select);
 		// Check double username or email in database
 		while ($customer_row = mysqli_fetch_array($customer_run)) {
 			if ($customer_row['customer_user'] == $customer_user)

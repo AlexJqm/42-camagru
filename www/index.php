@@ -1,11 +1,10 @@
 <?php
 	session_start();
-	$db_link = mysqli_connect("192.168.99.100:3306", "root", "root");
-	if ($db_link)
-		if (!mysqli_select_db($db_link, "db_camagru"))
+	$con = mysqli_connect("192.168.99.100:3306","root","root");
+	if ($con)
+		if (!mysqli_select_db($con, "db_camagru"))
 			require 'database/install.php';
 	include("database/db.php");
-	$con = mysqli_connect("192.168.99.100:3306","root","root","db_camagru");
 ?>
 <!doctype html>
 <html lang="en">
