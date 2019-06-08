@@ -1,10 +1,15 @@
 <?php
 	session_start();
-	$con = mysqli_connect("192.168.99.100:3306","root","root");
-	if ($con)
-		if (!mysqli_select_db($con, "db_camagru"))
-			require 'database/install.php';
-	include("database/db.php");
+	$db_state = 0;
+	include 'database/install.php';
+	$db_dns = "mysql:host=db;dbname=db_camagru;charset=utf8mb4";
+	$opt = [PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION];
+	try {
+		$db_con = new PDO($db_dns, "root", "root", $opt);
+	} catch (PDOException $e) {
+		echo $e->getMessage()."<br>";
+		die();
+	}
 ?>
 <!doctype html>
 <html lang="en">
@@ -27,9 +32,9 @@
 			}
 		</style>
 	</head>
-	<body class="text-secondary">
+	<body class="text-secondary pb-5">
 		<nav class="navbar navbar-expand-lg navbar-light bg-light" style="margin-bottom: 50px;">
-			<a class="navbar-brand text-secondary" href="#"><i class="fas fa-camera-retro"></i> Navbar</a>
+			<a class="navbar-brand text-secondary" href="index.php"><i class="fas fa-camera-retro text-warning"></i> Camagru</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
@@ -37,7 +42,7 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item">
-						<a class="nav-link" href="index.php">Home</a>
+						<a class="nav-link" href="index.php">Accueil</a>
 					</li>
 					<?php if ($_SESSION['customer_user'] == NULL) { ?>
 					<li class="nav-item">
@@ -48,13 +53,13 @@
 					</li>
 					<?php } else { ?>
 					<li class="nav-item">
-						<a class="nav-link" href="index.php?profil">Mon profil</a>
+						<a class="nav-link" href="index.php?profil=<?php echo $_SESSION['customer_user'] ?>">Mon profil</a>
 					</li>
 					<?php } ?>
 				</ul>
-				<form class="form-inline my-2 my-lg-0">
-					<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+				<form class="form-inline my-2 my-lg-0" action="" method="GET">
+					<input class="form-control mr-sm-2" type="search" placeholder="Recherche" name="search">
+					<button class="btn btn-outline-warning my-2 my-sm-0 mr-4" type="submit">Rechercher</button>
 				</form>
 				<?php if ($_SESSION['customer_user'] != NULL) { ?>
 				<ul class="navbar-nav">
@@ -71,15 +76,19 @@
 
 		<?php
 			if (isset($_GET['login']))
-				include("login.php");
+				require ("login.php");
 			if (isset($_GET['register']))
-				include("register.php");
+				require ("register.php");
 			if (isset($_GET['profil']))
-				include("profil.php");
+				require ("profil.php");
 			if (isset($_GET['account']))
-				include("account.php");
+				require ("account.php");
 			if (isset($_GET['logout']))
-				include("logout.php");
+				require ("logout.php");
+			if (isset($_GET['search']))
+				require	("search.php");
+			if (isset($_GET['404']))
+				require	("404.php");
 		?>
 
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

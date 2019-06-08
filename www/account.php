@@ -1,19 +1,23 @@
 <?php
-	$customer_select = "SELECT * FROM customers";
-	$customer_run = mysqli_query($con, $customer_select);
-	while ($customer_row = mysqli_fetch_array($customer_run)) {
+	$customer_run = $db_con->query("SELECT * FROM customers WHERE customer_user = '$_SESSION[customer_user]'");
+	$customer_row = $customer_run->fetch();
 ?>
 <div class="container">
 	<h4 class="mb-3">Image de profil</h4>
-	<form action="" method="POST">
-		<div class="mb-3">
-			<div class="form-group">
-				<input type="file" class="form-control-file" name="userfile">
+	<form action="" method="POST" enctype="multipart/form-data">
+		<div class="row">
+			<div class="col-md-6">
+				<div class="form-group">
+					<input type="file" class="form-control-file" name="userfile"><br>
+					<button type="submit" name="customer_img" class="btn btn-sm btn-warning">Modifier</button>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<img src="uploads/<?php echo $customer_row['customer_img'] ?>" class="rounded-circle float-right" style="width: 120px; height: 120px;" alt="Image de profil">
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-md-1 ml-md-auto mb-3">
-				<button type="submit" name="customer_img" class="btn btn-sm btn-warning">Modifier</button>
 			</div>
 		</div>
 	</form>
@@ -55,7 +59,6 @@
 				<button type="submit" name="customer_info" class="btn btn-sm btn-warning">Modifier</button>
 			</div>
 		</div>
-<?php } ?>
 	</form>
 	<hr class="mb-4">
 	<h4 class="mb-3">Modifier mot de passe</h4>
@@ -118,11 +121,10 @@
 		$customer_fn = $_POST['customer_fn'];
 		$customer_user = $_POST['customer_user'];
 		$customer_bio = $_POST['customer_bio'];
-		$customer_update= "UPDATE customers SET customer_ln = '$customer_ln',
+		$customer_run = $db_con->query("UPDATE customers SET customer_ln = '$customer_ln',
 			customer_fn = '$customer_fn', customer_user = '$customer_user', customer_bio = '$customer_bio'
-			WHERE customer_user = '$_SESSION[customer_user]'";
+			WHERE customer_user = '$_SESSION[customer_user]'");
 		$_SESSION['customer_user'] = $customer_user;
-		$customer_run = mysqli_query($con, $customer_update);
 		exit ("<script>window.open('index.php?account','_self')</script>");
 	}
 	if (isset($_POST['customer_password'])) {
@@ -130,17 +132,13 @@
 		$customer_newpw = $_POST['customer_newpw'];
 		$customer_newpw2 = $_POST['customer_newpw2'];
 		if ($customer_newpw != $customer_newpw2)
-			exit ("<script>alert('Erreur avec le nouveau mot de passe.')</script>");
-		$customer_select = "SELECT * FROM customers WHERE customer_user = '$_SESSION[customer_user]'";
-		$customer_run = mysqli_query($con, $customer_select);
-		while ($customer_row = mysqli_fetch_array($customer_run)) {
-			if ($customer_password == $customer_row['customer_password']) {
-				$customer_update = "UPDATE customers SET customer_password = '$customer_newpw' WHERE customer_user = '$_SESSION[customer_user]'";
-				$customer_run = mysqli_query($con, $customer_update);
-				exit ("<script>window.open('index.php?account','_self')</script>");
-			} else
-				exit ("<script>alert('Erreur de mot de passe.')</script>");
-		}
+			exit ("<script>window.open('index.php?404','_self')</script>");
+		$customer_run = $db_con->query("SELECT * FROM customers WHERE customer_user = '$_SESSION[customer_user]'");
+		if ($customer_password == $customer_row['customer_password']) {
+			$customer_run = $db_con->query("UPDATE customers SET customer_password = '$customer_newpw' WHERE customer_user = '$_SESSION[customer_user]'");
+			exit ("<script>window.open('index.php?account','_self')</script>");
+		} else
+			exit ("<script>window.open('index.php?404','_self')</script>");
 	}
 	if (isset($_POST['customer_email'])) {
 		$customer_email = $_POST['customer_oldemail'];
@@ -148,24 +146,23 @@
 		$customer_newemail2 = $_POST['customer_newemail2'];
 		if ($customer_newemail != $customer_newemail2)
 			exit ("<script>alert('Erreur avec la nouvelle adresse email.')</script>");
-		$customer_select = "SELECT * FROM customers WHERE customer_user = '$_SESSION[customer_user]'";
-		$customer_run = mysqli_query($con, $customer_select);
-		while ($customer_row = mysqli_fetch_array($customer_run)) {
-			if ($customer_email == $customer_row['customer_email']) {
-				$customer_update = "UPDATE customers SET customer_email = '$customer_newemail' WHERE customer_user = '$_SESSION[customer_user]'";
-				$customer_run = mysqli_query($con, $customer_update);
-				exit ("<script>window.open('index.php?account','_self')</script>");
-			} else
-				exit ("<script>alert('Erreur d'adresse email.')</script>");
-		}
+		$customer_run = $db_con->query("SELECT * FROM customers WHERE customer_user = '$_SESSION[customer_user]'");
+		if ($customer_email == $customer_row['customer_email']) {
+			$customer_run = $db_con->query("UPDATE customers SET customer_email = '$customer_newemail' WHERE customer_user = '$_SESSION[customer_user]'");
+			exit ("<script>window.open('index.php?account','_self')</script>");
+		} else
+			exit ("<script>window.open('index.php?404','_self')</script>");
 	}
 	if (isset($_POST['customer_img'])) {
-		$customer_img = $_POST['customer_pp'];
-		$uploaddir = "../uploalds";
+		if ($_FILES['userfile']['size'] == NULL)
+			exit ;
+		$customer_img = basename($_FILES['userfile']['tmp_name']) . "." . basename($_FILES['userfile']['type']);
+		if (file_exists("../uploads") == false)
+			mkdir ("../uploads", 0777);
+		$uploaddir = "../uploads";
 		$uploadfile = $uploaddir . "/" . basename($_FILES['userfile']['tmp_name'] . "." . basename($_FILES['userfile']['type']));
 		move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile);
-		$customer_update = "UPDATE customers SET customer_img = '$customer_img' WHERE customer_user = '$_SESSION[customer_user]'";
-		$customer_run = mysqli_query($con, $customer_update);
+		$customer_run = $db_con->query("UPDATE customers SET customer_img = '$customer_img' WHERE customer_user = '$_SESSION[customer_user]'");
 		exit ("<script>window.open('index.php?account','_self')</script>");
 	}
 ?>
