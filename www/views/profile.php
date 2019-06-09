@@ -12,9 +12,11 @@
 	<?php
 		if (isset($_GET['profil'])) {
 			$customer_user = $_GET['profil'];
-			$profil_select = "SELECT * FROM customers WHERE customer_user = '$customer_user'";
-			$profil_run = mysqli_query($con, $profil_select);
-			while ($profil_row = mysqli_fetch_array($profil_run)) {
+			$profil_run  = $db_con->query("SELECT COUNT(*) FROM customers WHERE customer_user = '$customer_user'");
+			if ($profil_run->fetchColumn() == 0)
+				exit ("<script>window.open('index.php?404','_self')</script>");
+			$profil_run = $db_con->query("SELECT * FROM customers WHERE customer_user = '$customer_user'");
+			while ($profil_row = $profil_run->fetch()) {
 				$customer_email = $profil_row['customer_email'];
 				$customer_ln = $profil_row['customer_ln'];
 				$customer_fn = $profil_row['customer_fn'];
