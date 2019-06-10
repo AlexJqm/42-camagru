@@ -1,13 +1,47 @@
 # 42-camagru
 
-Create virtual machine: ```docker-machine create $name```
+To-do list
 
-Or start virtual machine: ```docker-machine start $name```
+## Code section
 
-Set environment variables : ```eval "$(docker-machine env $name)"```
+- Language
+	- HTML [x]
+	- CSS [x]
+		- Frameworks CSS Bootstrap [x]
+	- JS [x]
+	- PHP avec  interface d’abstraction PDO [x]
+		- mode d’erreur PDO::ERRMODE_EXCEPTION [x]
 
-Start server: ```docker-compose up -d```
+## General section
 
-Get ip virtual machine: ```docker-machine ip $name```
+- Site template
+	- header [x]
+	- section principale [x]
+	- footer [x]
+	- responsive [x]
 
-Run mysql client: ```docker-compose exec db mysql -u root -p```
+## Utilisateur section
+
+- Utilisateur contenu
+	- adresse email [x]
+	- login [x]
+	- photo de profil [x]
+	- nom [x]
+	- prénom [x]
+	- mot de passe [x]
+
+- Mail
+	- Validation inscription par mail [x]
+	- Mot de passe oublié [x]
+
+- Connexion utilisateur
+	- login [x]
+	- mot de passe [x]
+	- déconnecter n’importe quelle page du site [x]
+
+- Edite utilisateur
+	- adresse email [x]
+	- photo de profil [x]
+	- mot de passe  [x]
+	- informations [x]
+

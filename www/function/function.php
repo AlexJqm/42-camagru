@@ -85,7 +85,7 @@
 	}
 	if (isset($_POST['customer_img'])) {
 		if ($_FILES['userfile']['size'] == NULL)
-			exit ;
+			exit ("<script>window.open('../index.php?account=error','_self')</script>");
 		$customer_img = basename($_FILES['userfile']['tmp_name']) . "." . basename($_FILES['userfile']['type']);
 		if (file_exists("../uploads") == false)
 			mkdir ("../uploads", 0777);
@@ -95,5 +95,4 @@
 		$customer_run = $db_con->query("UPDATE customers SET customer_img = '$customer_img' WHERE customer_user = '$_SESSION[customer_user]'");
 		exit ("<script>window.open('../index.php?account','_self')</script>");
 	}
-
 ?>

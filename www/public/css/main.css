@@ -1,0 +1,8 @@
+.container {
+	animation: launch 1s;
+	opacity: 1;
+}
+@keyframes launch {
+	0% {opacity: 0;}
+	100% {opacity: 1;}
+}

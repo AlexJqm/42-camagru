@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light" style="margin-bottom: 50px;">
-	<a class="navbar-brand text-secondary" href="index.php"><i class="fas fa-camera-retro text-warning"></i> Camagru</a>
+	<a class="navbar-brand text-secondary" href="/"><i class="fas fa-camera-retro text-warning"></i> Camagru</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 	</button>
@@ -7,7 +7,7 @@
 	<div class="collapse navbar-collapse" id="navbarSupportedContent">
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item">
-				<a class="nav-link" href="index.php">Accueil</a>
+				<a class="nav-link" href="/">Accueil</a>
 			</li>
 			<?php if ($_SESSION['customer_user'] == NULL) { ?>
 			<li class="nav-item">
@@ -18,7 +18,7 @@
 			</li>
 			<?php } else { ?>
 			<li class="nav-item">
-				<a class="nav-link" href="index.php?profil=<?php echo $_SESSION['customer_user'] ?>">Mon profil</a>
+				<a class="nav-link" href="index.php?profile=<?php echo $_SESSION['customer_user'] ?>">Mon profil</a>
 			</li>
 			<?php } ?>
 		</ul>

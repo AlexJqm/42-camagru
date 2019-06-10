@@ -21,8 +21,8 @@
 				$customer_ln = $search_row['customer_ln'];
 				$customer_img = $search_row['customer_img'];
 	?>
-		<tr style="cursor: pointer;" onclick="window.location='index.php?profil=<?php echo $customer_user ?>';">
-			<td><img src="uploads/<?php echo $customer_img ?>" class="rounded-circle" style="width: 25px; height: 25px;" alt="Image de profil"></td>
+		<tr style="cursor: pointer;" onclick="window.location='index.php?profile=<?php echo $customer_user ?>';">
+			<td><img src="public/images/profile_picture/<?php echo $customer_img ?>" class="rounded-circle" style="width: 25px; height: 25px;" alt="Image de profil"></td>
 			<td><?php echo $customer_user ?></td>
 			<td><?php echo $customer_email ?></td>
 			<td><?php echo $customer_ln . " " . $customer_fn ?></td>

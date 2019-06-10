@@ -13,7 +13,7 @@
 				</div>
 			</div>
 			<div class="col-md-6">
-				<img src="uploads/<?php echo $customer_row['customer_img'] ?>" class="rounded-circle float-right" style="width: 120px; height: 120px;" alt="Image de profil">
+				<img src="public/images/profile_picture/<?php echo $customer_row['customer_img'] ?>" class="rounded-circle float-right" style="width: 120px; height: 120px;" alt="Image de profil">
 			</div>
 		</div>
 		<div class="row">
