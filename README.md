@@ -49,3 +49,12 @@
 	- Modification du compte ✖️
 	- Barre de recherche ✖️
 	- Inscription/Connexion ✖️
+
+- Encryptage des mots de passe
+
+## Securité section
+
+- Recherche d'utilisateur ✔️
+- Systeme de follow ✔️
+- Mur des derniers posts des utilisateurs follows ✖️
+- Systeme de messagerie ✖️
