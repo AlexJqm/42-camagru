@@ -35,7 +35,7 @@
 - Connexion utilisateur
 	- login ✔️
 	- mot de passe ✔️
-	- déconnecter n’importe quelle page du site ✔️
+	- déconnecter depuis n’importe quelle page du site ✔️
 
 - Edite utilisateur
 	- adresse email ✔️
@@ -43,3 +43,9 @@
 	- mot de passe  ✔️
 	- informations ✔️
 
+## Securité section
+
+- Injection de code
+	- Modification du compte ✖️
+	- Barre de recherche ✖️
+	- Inscription/Connexion ✖️

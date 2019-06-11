@@ -28,11 +28,16 @@
 		</form>
 		<?php if ($_SESSION['customer_user'] != NULL) { ?>
 		<ul class="navbar-nav">
-			<li class="nav-item">
-				<a class="nav-link" href="index.php?account">Mon compte</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="index.php?logout">Deconnexion</a>
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					Mon compte
+				</a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					<a class="dropdown-item" href="index.php?account">Informations</a>
+					<a class="dropdown-item" href="index.php?followers">Mes followers</a>
+					<div class="dropdown-divider"></div>
+					<a class="dropdown-item" href="index.php?logout">Deconnexion</a>
+				</div>
 			</li>
 		</ul>
 		<?php } ?>

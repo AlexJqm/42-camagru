@@ -6,3 +6,10 @@
 	0% {opacity: 0;}
 	100% {opacity: 1;}
 }
+.list-inline {
+	margin-bottom: 0px;
+}
+.card-footer {
+	padding-bottom: 0px !important;
+	height: 48px !important;
+}
