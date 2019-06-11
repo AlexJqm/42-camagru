@@ -52,7 +52,7 @@
 
 - Encryptage des mots de passe
 
-## Securité section
+## Bonus
 
 - Recherche d'utilisateur ✔️
 - Systeme de follow ✔️
