@@ -43,6 +43,17 @@
 	- mot de passe  ✔️
 	- informations ✔️
 
+## Galerie section
+
+- Images
+	- Ajouter ✔️
+	- Like ✔️
+	- Commentaire ✖️
+	- Supprimer ✖️
+	- Partager ✖️
+	
+- Webcam
+
 ## Securité section
 
 - Injection de code
@@ -55,6 +66,6 @@
 ## Bonus
 
 - Recherche d'utilisateur ✔️
-- Systeme de follow ✔️
+- Systeme de follow + liste des personnes follow ✔️
 - Mur des derniers posts des utilisateurs follows ✖️
 - Systeme de messagerie ✖️
