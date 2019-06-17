@@ -29,6 +29,9 @@
 			case 'followers':
 				require 'view/followers.php';
 				break;
+			case 'creation':
+				require 'view/creation.php';
+				break;
 			default:
 				require 'view/404.php';
 				break;

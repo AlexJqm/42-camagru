@@ -20,8 +20,20 @@
 			<li class="nav-item">
 				<a class="nav-link" href="index.php?profile=<?php echo $_SESSION['customer_user'] ?>">Mon profil</a>
 			</li>
-			<?php } ?>
+			<li class="nav-item">
+				<a class="nav-link" href="index.php?creation">Créer un montage photo</a>
+			</li>
 		</ul>
+		<ul class="navbar-nav">
+			<li class="nav-item">
+				<a class="nav-link" href="index.php?notification">
+					<button type="button" class="btn btn-light">
+						Notifications <span class="badge badge-danger">4</span>
+					</button>
+				</a>
+			</li>
+		</ul>
+		<?php } ?>
 		<form class="form-inline my-2 my-lg-0" action="" method="GET">
 			<input class="form-control mr-sm-2" type="search" placeholder="Recherche" name="search">
 			<button class="btn btn-outline-warning my-2 my-sm-0 mr-4" type="submit">Rechercher</button>

@@ -87,12 +87,30 @@
 		if ($_FILES['userfile']['size'] == NULL)
 			exit ("<script>window.open('../index.php?account=error','_self')</script>");
 		$customer_img = basename($_FILES['userfile']['tmp_name']) . "." . basename($_FILES['userfile']['type']);
-		if (file_exists("../uploads") == false)
-			mkdir ("../uploads", 0777);
-		$uploaddir = "../uploads";
+		if (file_exists("../uploads/profile_picture") == false)
+			mkdir ("../uploads/profile_picture", 0777);
+		$uploaddir = "../uploads/profile_picture";
 		$uploadfile = $uploaddir . "/" . basename($_FILES['userfile']['tmp_name'] . "." . basename($_FILES['userfile']['type']));
 		move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile);
 		$customer_run = $db_con->query("UPDATE customers SET customer_img = '$customer_img' WHERE customer_user = '$_SESSION[customer_user]'");
 		exit ("<script>window.open('../index.php?account','_self')</script>");
+	}
+	if (isset($_POST['post_picture'])) {
+		$picture_name = $_POST['picture_name'];
+		$picture_desc = $_POST['picture_desc'];
+
+		if ($_FILES['userfile']['size'] == NULL)
+			exit ("<script>window.open('../index.php?creation=error','_self')</script>");
+		$picture_img = basename($_FILES['userfile']['tmp_name']) . "." . basename($_FILES['userfile']['type']);
+		if (file_exists("../uploads/post_picture") == false)
+			mkdir ("../uploads/post_picture", 0777);
+		$uploaddir = "../uploads/post_picture";
+		$uploadfile = $uploaddir . "/" . basename($_FILES['userfile']['tmp_name'] . "." . basename($_FILES['userfile']['type']));
+		move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile);
+		$picture_run = $db_con->query("SET lc_time_names = 'fr_FR'; INSERT INTO pictures (picture_name, picture_source, picture_date, picture_like, picture_desc, picture_comment, picture_author)
+										VALUES ('$picture_name','$picture_img', DATE_FORMAT(NOW(), '%d %M %Y'), '0', '$picture_desc', '0', '$_SESSION[customer_user]');");
+			exit ("<script>window.open('../index.php?profile=$_SESSION[customer_user]','_self')</script>");
+
+
 	}
 ?>
