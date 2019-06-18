@@ -57,19 +57,29 @@ CREATE TABLE `pictures` (
 	`picture_author` VARCHAR(32)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Table structure for table `followers`
+--
+
 CREATE TABLE `followers` (
 	`follower_id` INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
 	`customer_user` VARCHAR(32),
 	`follower_user` VARCHAR(32),
-	`follower_bool` INT DEFAULT 0 NOT NULL
+	`follower_bool` INT DEFAULT 0 NOT NULL,
+	`notif_bool` INT DEFAULT 1 NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Table structure for table `likes`
+--
 
 CREATE TABLE `likes` (
 	`like_id` INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
 	`picture_id` INT,
 	`customer_user` VARCHAR(32),
 	`like_user` VARCHAR(32),
-	`like_bool` INT DEFAULT 0 NOT NULL
+	`like_bool` INT DEFAULT 0 NOT NULL,
+	`notif_bool` INT DEFAULT 1 NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --

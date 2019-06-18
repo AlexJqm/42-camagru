@@ -110,7 +110,5 @@
 		$picture_run = $db_con->query("SET lc_time_names = 'fr_FR'; INSERT INTO pictures (picture_name, picture_source, picture_date, picture_like, picture_desc, picture_comment, picture_author)
 										VALUES ('$picture_name','$picture_img', DATE_FORMAT(NOW(), '%d %M %Y'), '0', '$picture_desc', '0', '$_SESSION[customer_user]');");
 			exit ("<script>window.open('../index.php?profile=$_SESSION[customer_user]','_self')</script>");
-
-
 	}
 ?>

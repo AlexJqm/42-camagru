@@ -27,9 +27,9 @@
 					$like_run = $db_con->query("SELECT COUNT(*) FROM likes WHERE customer_user = '$_SESSION[customer_user]'
 												AND like_user = '$profile_user' AND like_bool = '1' AND picture_id = '$picture_id'");
 					if (!$like_run->fetchColumn())
-						echo '<a href="index.php?profile=' . $profile_user . '&action=like' . $picture_id . '"><i class="far fa-heart"></i></a>';
+						echo '<a href="index.php?profile=' . $profile_user . '&action=like' . $picture_id . '"><i class="far fa-heart text-secondary"></i></a>';
 					else
-						echo '<a href="index.php?profile=' . $profile_user . '&action=unlike' . $picture_id . '"><i class="far fa-heart"></i></a>'
+						echo '<a href="index.php?profile=' . $profile_user . '&action=unlike' . $picture_id . '"><i class="fas fa-heart text-danger"></i></a>'
 				?>
 				<?php echo print_like($profile_user, $picture_id)[0] ?> Likes
 				<p class="float-right"><i class="far fa-comment"></i> <?php echo $picture_comment ?> Commentaires</p>

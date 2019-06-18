@@ -32,6 +32,12 @@
 			case 'creation':
 				require 'view/creation.php';
 				break;
+			case 'notification':
+				require 'view/notification.php';
+				break;
+			case 'manage':
+					require 'view/manage_content.php';
+					break;
 			default:
 				require 'view/404.php';
 				break;

@@ -47,6 +47,7 @@
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 					<a class="dropdown-item" href="index.php?account">Informations</a>
 					<a class="dropdown-item" href="index.php?followers">Mes followers</a>
+					<a class="dropdown-item" href="index.php?manage">Mon contenu</a>
 					<div class="dropdown-divider"></div>
 					<a class="dropdown-item" href="index.php?logout">Deconnexion</a>
 				</div>

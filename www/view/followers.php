@@ -1,7 +1,8 @@
 <div class="container">
 	<div class="row text-center">
 <?php
-	$follower_run = $db_con->query("SELECT * FROM customers INNER JOIN followers ON customers.customer_user = followers.customer_user WHERE followers.follower_user = '$_SESSION[customer_user]' AND followers.follower_bool = '1'");
+	$follower_run = $db_con->query("SELECT * FROM customers INNER JOIN followers ON customers.customer_user = followers.customer_user
+									WHERE followers.follower_user = '$_SESSION[customer_user]' AND followers.follower_bool = '1'");
 	while ($follower_row = $follower_run->fetch()) {
 ?>
 		<div class="col-sm-4 mb-3">
