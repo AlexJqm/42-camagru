@@ -5,8 +5,8 @@
 		require 'view/home.php';
 	else
 		switch ($request_uri[0]) {
-			case 'account':
-				require 'view/account.php';
+			case 'manage_profile':
+				require 'view/manage_profile.php';
 				break;
 			case 'header':
 				require 'view/header.php';
@@ -35,9 +35,12 @@
 			case 'notification':
 				require 'view/notification.php';
 				break;
-			case 'manage':
-					require 'view/manage_content.php';
-					break;
+			case 'manage_content':
+				require 'view/manage_content.php';
+				break;
+			case 'content':
+				require 'view/content.php';
+				break;
 			default:
 				require 'view/404.php';
 				break;

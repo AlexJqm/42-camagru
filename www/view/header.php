@@ -21,38 +21,38 @@
 				<a class="nav-link" href="index.php?profile=<?php echo $_SESSION['customer_user'] ?>">Mon profil</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="index.php?creation">Créer un montage photo</a>
+				<a class="nav-link" href="index.php?creation">Créer un montage</a>
 			</li>
 		</ul>
 		<ul class="navbar-nav">
 			<li class="nav-item">
 				<a class="nav-link" href="index.php?notification">
-					<button type="button" class="btn btn-light">
-						Notifications <span class="badge badge-danger">4</span>
+					<button type="button" class="btn btn-light text-secondary">
+						Notifications <span class="badge badge-danger"><?php require 'function/notification.php'; echo notification_alert($_SESSION['customer_user']); ?></span>
 					</button>
 				</a>
 			</li>
 		</ul>
 		<?php } ?>
-		<form class="form-inline my-2 my-lg-0" action="" method="GET">
-			<input class="form-control mr-sm-2" type="search" placeholder="Recherche" name="search">
-			<button class="btn btn-outline-warning my-2 my-sm-0 mr-4" type="submit">Rechercher</button>
-		</form>
 		<?php if ($_SESSION['customer_user'] != NULL) { ?>
 		<ul class="navbar-nav">
-			<li class="nav-item dropdown">
+			<li class="nav-item dropdown mr-2">
 				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					Mon compte
 				</a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-					<a class="dropdown-item" href="index.php?account">Informations</a>
+					<a class="dropdown-item" href="index.php?manage_profile">Mon profil</a>
 					<a class="dropdown-item" href="index.php?followers">Mes followers</a>
-					<a class="dropdown-item" href="index.php?manage">Mon contenu</a>
+					<a class="dropdown-item" href="index.php?manage_content">Mon contenu</a>
 					<div class="dropdown-divider"></div>
 					<a class="dropdown-item" href="index.php?logout">Deconnexion</a>
 				</div>
 			</li>
 		</ul>
 		<?php } ?>
+		<form class="form-inline my-2 my-lg-0" action="" method="GET">
+			<input class="form-control mr-sm-2" type="search" placeholder="Recherche" name="search">
+			<button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Rechercher</button>
+		</form>
 	</div>
 </nav>

@@ -17,14 +17,15 @@
 			<tr class="table-light">
 				<th scope="row"><?php echo $picture_id ?></th>
 				<td><?php echo $picture_name ?></td>
-				<td><?php echo $picture_date ?></td>
-				<td><?php echo $picture_like ?></td>
-				<td><a href="index.php?manage=del_<?php echo $picture_id ?>"><i class="far fa-times-circle text-danger"></i></a></td>
+				<td>Publié le <?php echo $picture_date ?></td>
+				<td><?php echo $picture_like ?> Likes</td>
+				<td><a href="index.php?content=<?php echo $picture_id ?>"><i class="far fa-eye text-secondary"></i></a></td>
+				<td><a href="index.php?manage_content=del_<?php echo $picture_id ?>"><i class="far fa-times-circle text-danger"></i></a></td>
 			</tr>
 		<?php
-				if (isset($_GET['manage']) && $_GET['manage'] == "del_$picture_id") {
+				if (isset($_GET['manage_content']) && $_GET['manage_content'] == "del_$picture_id") {
 					remove_content($_SESSION['customer_user'], $picture_id);
-					exit ("<script>window.open('index.php?manage','_self')</script>");
+					exit ("<script>window.open('index.php?manage_content','_self')</script>");
 				}
 			}
 		?>
