@@ -2,7 +2,7 @@
 	<table class="table table-borderless">
 		<tbody>
 		<?php
-			require 'function/remove_content.php';
+			require_once('function/remove_content.php');
 			$content_run = $db_con->query("SELECT * FROM pictures WHERE picture_author = '$_SESSION[customer_user]' ORDER BY picture_id DESC");
 			while ($content_row = $content_run->fetch()) {
 				$picture_id = $content_row['picture_id'];

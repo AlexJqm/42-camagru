@@ -1,5 +1,6 @@
 <?php
 	require_once('function/connect.php');
+
 	function like($profile_user, $like_user, $picture_id) {
 		$db_con = db_con();
 		$like_run = $db_con->query("SELECT COUNT(*) FROM likes WHERE customer_user = '$profile_user'

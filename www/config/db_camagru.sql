@@ -54,6 +54,7 @@ CREATE TABLE `pictures` (
 	`picture_like` INT,
 	`picture_desc` TEXT,
 	`picture_comment` TEXT,
+	`picture_filter` TEXT,
 	`picture_author` VARCHAR(32)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

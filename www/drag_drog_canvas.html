@@ -1,0 +1,44 @@
+<script>
+	var decX
+	var decY
+	function godrag(e){
+		var dde = (navigator.vendor) ? document.body : document.documentElement;
+		var Obj =  e.currentTarget;
+		var X = e.clientX + dde.scrollLeft;
+		var Y = e.clientY + dde.scrollTop;
+		decX = X - Obj.offsetLeft
+		decY = Y - Obj.offsetTop
+		e.dataTransfer.setData('Text', Obj.src);
+		e.dataTransfer.effectAllowed = 'copy';
+		e.dataTransfer.dropEffect = 'move';
+	}
+	function Dragov(e) {
+		e.preventDefault();
+	}
+	function drop(e) {
+		e.preventDefault();
+		var dde = (navigator.vendor) ? document.body : document.documentElement;
+		var X = e.clientX + dde.scrollLeft;
+		var Y = e.clientY + dde.scrollTop;
+		var draaag = e.dataTransfer.getData('Text');
+		var imgz = new Image();
+		imgz.src = draaag;
+		imgz.onload = function(){
+			var ctx = document.getElementById('cvs').getContext('2d');
+			dcx = X - decX - document.getElementById('cvs').offsetLeft
+			dcy = Y- decY - document.getElementById('cvs').offsetTop
+			ctx.drawImage(imgz, dcx, dcy);
+		}
+	}
+	function clearDraw() {
+		var canvas = document.getElementById("cvs");
+		var ctx = canvas.getContext("2d");
+		ctx.clearRect(0, 0, canvas.width, canvas.height);
+	}
+</script>
+<div>
+	<canvas id="cvs" style='background-color:red;margin-left:200px' width="350" height="350" ondrop="drop(event)" ondragover="Dragov(event)"></canvas>
+	<button onclick="clearDraw()">Reset</button>
+</div>
+
+<img src='https://fr.freelogodesign.org/Content/img/logo-ex-2.png' ondragstart='godrag(event)'>

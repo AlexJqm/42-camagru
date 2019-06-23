@@ -1,5 +1,6 @@
 <?php
 	require_once('function/connect.php');
+
 	function follow($profile_user, $follower_user) {
 		$db_con = db_con();
 		$follow_run = $db_con->query("SELECT COUNT(*) FROM followers WHERE customer_user = '$profile_user'

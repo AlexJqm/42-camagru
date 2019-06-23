@@ -1,5 +1,7 @@
 <?php
 	require_once('function/connect.php');
+	$db_con = db_con();
+
 	function notification_alert($customer_user) {
 		$db_con = db_con();
 		$like_run = $db_con->query("SELECT COUNT(*) FROM likes WHERE (likes.like_user = '$customer_user'

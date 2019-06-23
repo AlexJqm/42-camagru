@@ -1,6 +1,6 @@
 <div class="container">
 <?php
-	require 'function/like.php';
+	require_once('function/like.php');
 
 	if (isset($_GET['content'])) {
 		$content_id = $_GET['content'];
@@ -17,10 +17,11 @@
 			$picture_like = $content_row['picture_like'];
 			$picture_desc = $content_row['picture_desc'];
 			$picture_comment = $content_row['picture_comment'];
+			$picture_filter = $content_row['picture_filter'];
 		?>
 	<div class="card-group mb-3" style="width: 975px; height: auto;">
 		<div class="card">
-			<img src="public/images/post_picture/<?php echo $picture_source ?>" class="card-img-top" alt="...">
+			<img src="public/images/post_picture/<?php echo $picture_source ?>" class="card-img-top filter-<?php echo $picture_filter ?>" alt="...">
 			<div class="card-body">
 				<h5 class="card-title"><?php echo $picture_name ?></h5>
 				<p class="card-text"><?php echo $picture_desc ?></p>

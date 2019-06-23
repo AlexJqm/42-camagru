@@ -41,6 +41,9 @@
 			case 'content':
 				require 'view/content.php';
 				break;
+			case 'filter':
+				require 'view/filter.php';
+				break;
 			default:
 				require 'view/404.php';
 				break;

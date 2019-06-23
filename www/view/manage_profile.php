@@ -1,4 +1,6 @@
 <?php
+	require_once('function/edit_profil.php');
+
 	$customer_run = $db_con->query("SELECT * FROM customers WHERE customer_user = '$_SESSION[customer_user]'");
 	$customer_row = $customer_run->fetch();
 ?>

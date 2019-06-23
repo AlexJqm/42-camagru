@@ -1,3 +1,5 @@
+<?php require_once('function/register.php'); ?>
+
 <div class="container">
 	<form class="form-signin" action="" method="POST">
 		<h1 class="h3 mb-3 font-weight-normal">Inscription</h1>
