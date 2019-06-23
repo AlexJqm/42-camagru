@@ -1,6 +1,5 @@
-<script>
-	var decX
-	var decY
+	var decX;
+	var decY;
 	function godrag(e){
 		var dde = (navigator.vendor) ? document.body : document.documentElement;
 		var Obj =  e.currentTarget;
@@ -24,21 +23,15 @@
 		var imgz = new Image();
 		imgz.src = draaag;
 		imgz.onload = function(){
-			var ctx = document.getElementById('cvs').getContext('2d');
-			dcx = X - decX - document.getElementById('cvs').offsetLeft
-			dcy = Y- decY - document.getElementById('cvs').offsetTop
+			var ctx = document.getElementById('canvas').getContext('2d');
+			dcx = X - decX - document.getElementById('canvas').offsetLeft
+			dcy = Y- decY - document.getElementById('canvas').offsetTop
 			ctx.drawImage(imgz, dcx, dcy);
+			document.getElementById('photo').value = ctx.toDataURL();
 		}
 	}
 	function clearDraw() {
-		var canvas = document.getElementById("cvs");
+		var canvas = document.getElementById("canvas");
 		var ctx = canvas.getContext("2d");
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
 	}
-</script>
-<div>
-	<canvas id="cvs" style='background-color:red;margin-left:200px' width="350" height="350" ondrop="drop(event)" ondragover="Dragov(event)"></canvas>
-	<button onclick="clearDraw()">Reset</button>
-</div>
-
-<img src='https://fr.freelogodesign.org/Content/img/logo-ex-2.png' ondragstart='godrag(event)'>

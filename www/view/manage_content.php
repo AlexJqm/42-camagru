@@ -1,5 +1,5 @@
 <div class="container">
-	<table class="table table-borderless">
+	<table class="table table-borderless table-dark rounded">
 		<tbody>
 		<?php
 			require_once('function/remove_content.php');
@@ -14,12 +14,12 @@
 				$picture_desc = $content_row['picture_desc'];
 				$picture_comment = $content_row['picture_comment'];
 		?>
-			<tr class="table-light">
+			<tr>
 				<th scope="row"><?php echo $picture_id ?></th>
 				<td><?php echo $picture_name ?></td>
 				<td>Publié le <?php echo $picture_date ?></td>
 				<td><?php echo $picture_like ?> Likes</td>
-				<td><a href="index.php?content=<?php echo $picture_id ?>"><i class="far fa-eye text-secondary"></i></a></td>
+				<td><a href="index.php?content=<?php echo $picture_id ?>"><i class="far fa-eye text-light"></i></a></td>
 				<td><a href="index.php?manage_content=del_<?php echo $picture_id ?>"><i class="far fa-times-circle text-danger"></i></a></td>
 			</tr>
 		<?php

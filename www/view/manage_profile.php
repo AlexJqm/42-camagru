@@ -10,12 +10,13 @@
 		<div class="row">
 			<div class="col-md-6">
 				<div class="form-group">
-					<input type="file" class="form-control-file" name="userfile"><br>
+					<input type="file" class="form-control-file bg-dark text-white" name="userfile"><br>
 					<button type="submit" name="customer_img" class="btn btn-sm btn-warning">Modifier</button>
 				</div>
 			</div>
 			<div class="col-md-6">
-				<img src="public/images/profile_picture/<?php echo $customer_row['customer_img'] ?>" class="rounded-circle float-right" style="width: 120px; height: 120px;" alt="Image de profil">
+				<img src="public/images/profile_picture/<?php echo $customer_row['customer_img'] ?>"
+				class="rounded-circle float-right border border-warning" style="width: 120px; height: 120px; border-width:2px !important;" alt="Image de profil">
 			</div>
 		</div>
 		<div class="row">
@@ -29,32 +30,29 @@
 		<div class="row">
 			<div class="col-md-6 mb-3">
 				<label>Nom</label>
-				<input type="text" class="form-control" name="customer_ln" value="<?php echo $customer_row['customer_ln'] ?>" required>
+				<input type="text" class="form-control bg-dark text-white" name="customer_ln" value="<?php echo $customer_row['customer_ln'] ?>" required>
 			</div>
 			<div class="col-md-6 mb-3">
 				<label for="customer_fn">Prenom</label>
-				<input type="text" class="form-control" name="customer_fn" value="<?php echo $customer_row['customer_fn'] ?>" required>
+				<input type="text" class="form-control bg-dark text-white" name="customer_fn" value="<?php echo $customer_row['customer_fn'] ?>" required>
 			</div>
 		</div>
 
 		<div class="mb-3">
 			<label for="customer_user">Pseudonyme</label>
 			<div class="input-group">
-				<div class="input-group-prepend">
-					<span class="input-group-text">@</span>
-				</div>
-				<input type="text" class="form-control" name="customer_user" value="<?php echo $customer_row['customer_user'] ?>" required>
+				<input type="text" class="form-control bg-dark text-white" name="customer_user" value="<?php echo $customer_row['customer_user'] ?>" required>
 			</div>
 		</div>
 
 		<div class="mb-3">
 			<label for="customer_email">Email</label>
-			<input type="email" class="form-control" name="customer_email" value="<?php echo $customer_row['customer_email'] ?>" disabled>
+			<input type="email" class="form-control bg-dark text-white" name="customer_email" value="<?php echo $customer_row['customer_email'] ?>" disabled>
 		</div>
 
 		<div class="mb-3">
 			<label for="customer_bio">Biographie</label>
-			<textarea type="text" class="form-control" name="customer_bio"><?php echo $customer_row['customer_bio'] ?></textarea>
+			<textarea type="text" class="form-control bg-dark text-white" name="customer_bio"><?php echo $customer_row['customer_bio'] ?></textarea>
 		</div>
 		<div class="row">
 			<div class="col-md-1 ml-md-auto mb-3">
@@ -68,20 +66,20 @@
 		<div class="row">
 			<div class="col-md-6 mb-3">
 				<label for="customer_oldpw">Ancien mot de passe</label>
-				<input type="text" class="form-control" name="customer_oldpw" required>
+				<input type="text" class="form-control bg-dark text-white" name="customer_oldpw" required>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-md-6 mb-3">
 				<label for="customer_newpw">Nouveau mot de passe</label>
-				<input type="text" class="form-control" name="customer_newpw" required>
+				<input type="text" class="form-control bg-dark text-white" name="customer_newpw" required>
 				<small class="form-text text-muted">
 					Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
 				</small>
 			</div>
 			<div class="col-md-6 mb-3">
 				<label for="customer_newpw2">Confirmation nouveau mot de passe</label>
-				<input type="text" class="form-control" name="customer_newpw2" required>
+				<input type="text" class="form-control bg-dark text-white" name="customer_newpw2" required>
 			</div>
 		</div>
 		<div class="row">
@@ -96,17 +94,17 @@
 		<div class="row">
 			<div class="col-md-6 mb-3">
 				<label>Ancienne adresse email</label>
-				<input type="email" class="form-control" name="customer_oldemail" placeholder="" required>
+				<input type="email" class="form-control bg-dark text-white" name="customer_oldemail" placeholder="" required>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-md-6 mb-3">
 				<label>Nouvelle adresse email</label>
-				<input type="text" class="form-control" name="customer_newemail" placeholder="" value="" required>
+				<input type="text" class="form-control bg-dark text-white" name="customer_newemail" placeholder="" value="" required>
 			</div>
 			<div class="col-md-6 mb-3">
 				<label>Confirmation nouvelle adresse email</label>
-				<input type="text" class="form-control" name="customer_newemail2" placeholder="" value="" required>
+				<input type="text" class="form-control bg-dark text-white" name="customer_newemail2" placeholder="" value="" required>
 			</div>
 		</div>
 		<div class="row">

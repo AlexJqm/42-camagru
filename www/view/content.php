@@ -20,7 +20,7 @@
 			$picture_filter = $content_row['picture_filter'];
 		?>
 	<div class="card-group mb-3" style="width: 975px; height: auto;">
-		<div class="card">
+		<div class="card bg-dark text-white">
 			<img src="public/images/post_picture/<?php echo $picture_source ?>" class="card-img-top filter-<?php echo $picture_filter ?>" alt="...">
 			<div class="card-body">
 				<h5 class="card-title"><?php echo $picture_name ?></h5>
@@ -32,7 +32,7 @@
 					$like_run = $db_con->query("SELECT COUNT(*) FROM likes WHERE customer_user = '$_SESSION[customer_user]'
 												AND like_user = '$picture_author' AND like_bool = '1' AND picture_id = '$picture_id'");
 					if (!$like_run->fetchColumn())
-						echo '<a href="index.php?content=' . $picture_id . '&action=like' . $picture_id . '"><i class="far fa-heart text-secondary"></i></a>';
+						echo '<a href="index.php?content=' . $picture_id . '&action=like' . $picture_id . '"><i class="far fa-heart text-light"></i></a>';
 					else
 						echo '<a href="index.php?content=' . $picture_id . '&action=unlike' . $picture_id . '"><i class="fas fa-heart text-danger"></i></a>'
 				?>

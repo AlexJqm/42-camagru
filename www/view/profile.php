@@ -1,7 +1,8 @@
 <div class="container">
 <?php
+	require_once('function/connect.php');
 	require_once('function/follower.php');
-
+	$db_con = db_con();
 	if (isset($_GET['profile'])) {
 		$profile_user = $_GET['profile'];
 		$profile_run  = $db_con->query("SELECT COUNT(*) FROM customers WHERE customer_user = '$profile_user'");
@@ -67,7 +68,7 @@
 			$picture_filter = $picture_row['picture_filter'];
 ?>
 	<div class="card-group mb-3" style="width: 975px; height: auto;">
-		<div class="card">
+		<div class="card text-light bg-dark">
 			<img src="public/images/post_picture/<?php echo $picture_source ?>" class="card-img-top filter-<?php echo $picture_filter ?>" alt="...">
 			<div class="card-body">
 				<h5 class="card-title"><?php echo $picture_name ?></h5>

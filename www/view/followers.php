@@ -6,7 +6,7 @@
 	while ($follower_row = $follower_run->fetch()) {
 ?>
 		<div class="col-sm-4 mb-3">
-			<div class="card" style="width: 18rem;">
+			<div class="card bg-dark text-white" style="width: 18rem;">
 				<div class="card-header text-center">
 					<img src="public/images/profile_picture/<?php echo $follower_row['customer_img'] ?>"
 								class="rounded-circle border"
@@ -23,7 +23,7 @@
 							echo $follower_row['customer_fn'] . ' ' . $follower_row['customer_ln'];
 					?>
 					</h6>
-					<a href="index.php?profile=<?php echo $follower_row['customer_user'] ?>"><button class="btn btn-sm btn-secondary">Voir profil</button></a>
+					<a href="index.php?profile=<?php echo $follower_row['customer_user'] ?>"><button class="btn btn-sm btn-light">Voir profil</button></a>
 				</div>
 			</div>
 		</div>

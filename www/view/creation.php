@@ -1,7 +1,7 @@
 <?php require_once('function/upload_picture_content.php'); ?>
 
 <div class="container">
-	<h4 class="mb-3 mb-2 text-secondary" onclick="show_form()">Creer votre montage depuis une <span class="text-warning">image</span> <i class="fas fa-chevron-down"></i></h4>
+	<h4 class="mb-3 mb-2 text-light" onclick="show_form()">Creer votre montage depuis une <span class="text-warning">image</span> <i class="fas fa-chevron-down"></i></h4>
 	<form action="" method="POST" enctype="multipart/form-data" id="form-picture">
 		<div class="row">
 			<div class="col-md-6">
@@ -13,18 +13,18 @@
 		<div class="mb-3">
 			<label for="picture_name">Titre</label>
 			<div class="input-group">
-				<input type="text" class="form-control" name="picture_name" required>
+				<input type="text" class="form-control bg-dark text-white" name="picture_name" required>
 			</div>
 		</div>
 		<div class="mb-3">
 			<label for="customer_bio">Description</label>
-			<textarea type="text" class="form-control" name="picture_desc"></textarea>
+			<textarea type="text" class="form-control bg-dark text-white" name="picture_desc"></textarea>
 		</div>
 		<div class="input-group mb-3">
-			<div class="input-group-prepend">
+			<div class="input-group-prepend bg-dark">
 				<label class="input-group-text" onclick="window.open('index.php?filter', '_blank');" for="filter_image" style="cursor: pointer">Voir les filtres</label>
 			</div>
-			<select class="custom-select" name="filter_image" id="filter_image">
+			<select class="custom-select bg-dark text-white" name="filter_image" id="filter_image">
 				<option selected value="Normal">Normal</option>
 				<option value="1977">1977</option>
 				<option value="Aden">Aden</option>
@@ -80,37 +80,54 @@
 <?php require_once('function/upload_photo_content.php'); ?>
 
 <div class="container">
-	<h4 class="mb-3 mt-2 text-secondary" onclick="show_form()">Creer votre montage avec votre <span class="text-warning">wecbam</span> <i class="fas fa-chevron-down"></i></h4>
+	<h4 class="mb-3 mt-2 text-light" onclick="show_form()">Creer votre montage avec votre <span class="text-warning">wecbam</span> <i class="fas fa-chevron-down"></i></h4>
 	<form action="" method="POST" enctype="multipart/form-data" onsubmit="preparePhoto();" id="form-camera">
 		<div class="row">
 			<div class="col">
-				<table class="table table-borderless">
-					<tbody>
-						<tr class="table-transparent">
-							<td><video id="video" class="border" width="430"  autoplay></video></td>
-							<td><canvas id="canvas" class="border" width="640" height="480"></canvas></td>
-						</tr>
-					</tbody>
-				</table>
-				<button id="snap" class="btn btn-sm btn-warning mb-4">Prendre une photo</button>
-				<input id="photo" name="photo" type="hidden">
+				<video id="video" class="border mr-4" width="430" autoplay></video>
+				<canvas id="canvas" class="border" width="640" height="480" ondrop="drop(event)" ondragover="Dragov(event)"></canvas>
+				<input type="button" id="snap" class="btn btn-sm btn-warning mb-4" value="Prendre une photo" style="cursor: pointer">
+				<input type="button" id="reset" onclick="clearDraw()" class="btn btn-sm btn-warning mb-4" value="Recommencer" style="cursor: pointer"><br>
+				<div class="input-group mb-3">
+					<div class="input-group-prepend">
+						<label class="input-group-text">Listes des stickers</label>
+					</div>
+					<select class="custom-select bg-dark text-white" id="sticker" onchange="sticker_preview()">
+						<option selected value="banana">Banane</option>
+						<option value="apple">Pomme</option>
+						<option value="neon-burger">Neon Burger</option>
+						<option value="42">Logo 42</option>
+						<option value="heart">Coeur</option>
+					</select>
+				</div>
+				<small class="form-text text-muted">
+					Sélectionner votre sticker, faite un cliqué/déplacé de l'image sur votre capture d'image.
+				</small>
+				<img src="" id="preview" ondragstart='godrag(event)'>
+				<script>
+					function sticker_preview() {
+						var sticker = document.getElementById("sticker").value;
+						document.getElementById("preview").src="public/images/stickers/" + sticker + ".png";
+					}
+				</script>
+								<input id="photo" name="photo" type="hidden">
 			</div>
 		</div>
 		<div class="mb-3 mt-3">
 			<label for="picture_name">Titre</label>
 			<div class="input-group">
-				<input type="text" class="form-control" name="picture_name" required>
+				<input type="text" class="form-control bg-dark text-white" name="picture_name" required>
 			</div>
 		</div>
 		<div class="mb-3">
 			<label for="customer_bio">Description</label>
-			<textarea type="text" class="form-control" name="picture_desc"></textarea>
+			<textarea type="text" class="form-control bg-dark text-white" name="picture_desc"></textarea>
 		</div>
 		<div class="input-group mb-3">
 			<div class="input-group-prepend">
 				<label class="input-group-text" onclick="window.open('index.php?filter', '_blank');" for="filter_camera" style="cursor: pointer">Voir les filtres</label>
 			</div>
-			<select class="custom-select" name="filter_camera" id="filter_camera">
+			<select class="custom-select bg-dark text-white" name="filter_camera" id="filter_camera">
 				<option selected value="Normal">Normal</option>
 				<option value="1977">1977</option>
 				<option value="Aden">Aden</option>
@@ -164,4 +181,5 @@
 </div>
 
 <script src="public/js/webcam.js"></script>
+<script src="public/js/sticker.js"></script>
 <script src="public/js/show_hidden_form.js"></script>
