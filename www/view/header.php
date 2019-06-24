@@ -18,7 +18,7 @@
 				<a class="nav-link" href="index.php?register">Inscription</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="index.php?login">Connexion</a>
+				<a class="nav-link" href="index.php?signin">Connexion</a>
 			</li>
 			<?php } else { ?>
 			<li class="nav-item">

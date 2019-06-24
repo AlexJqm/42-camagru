@@ -1,6 +1,6 @@
 <?php
 	require_once('function/connect.php');
-	require 'function/send_email.php';
+	require 'function/email.php';
 	$db_con = db_con();
 
 	if (isset($_POST['register'])) {

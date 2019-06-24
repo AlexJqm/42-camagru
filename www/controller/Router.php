@@ -23,7 +23,7 @@
 			case 'search':
 				require 'view/search.php';
 				break;
-			case 'login':
+			case 'signin':
 				require 'view/signin.php';
 				break;
 			case 'followers':
@@ -47,6 +47,12 @@
 			case 'confirm_email':
 				require 'view/confirm_email.php';
 				break;
+			case 'forget_password':
+				require 'view/forget_password.php';
+				break;
+			case 'new_password':
+					require 'view/new_password.php';
+					break;
 			default:
 				require 'view/404.php';
 				break;
