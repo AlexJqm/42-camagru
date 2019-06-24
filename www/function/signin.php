@@ -10,14 +10,14 @@
 		$customer_check = $customer_run->rowcount();
 		$customer_row = $customer_run->fetch();
 		if ($customer_check == 0)
-			exit ("<script>window.open('index.php?login=error','_self')</script>");
+			exit ("<script>window.open('index.php?signin=error','_self')</script>");
 		if ($customer_row['customer_status'] == 0)
-			exit ("<script>window.open('index.php?login=account_disabled','_self')</script>");
+			exit ("<script>window.open('index.php?signin=account_disabled','_self')</script>");
 		else if ($customer_check == 1 && $customer_row['customer_status'] == 1) {
 			$_SESSION['customer_user'] = $customer_user;
 			exit ("<script>window.open('index.php','_self')</script>");
 		} else {
-			exit ("<script>window.open('index.php?login=error','_self')</script>");
+			exit ("<script>window.open('index.php?signin=error','_self')</script>");
 		}
 	}
 ?>

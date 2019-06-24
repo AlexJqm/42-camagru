@@ -10,7 +10,7 @@
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
-SET time_zone = "+00:00";
+SET time_zone = "+02:00";
 
 CREATE DATABASE IF NOT EXISTS `db_camagru` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `db_camagru`;
@@ -83,6 +83,17 @@ CREATE TABLE `likes` (
 	`like_user` VARCHAR(32),
 	`like_bool` INT DEFAULT 0 NOT NULL,
 	`notif_bool` INT DEFAULT 1 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Table structure for table `comments`
+--
+
+CREATE TABLE `comments` (
+	`comment_id` INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+	`picture_id` INT,
+	`customer_user` VARCHAR(32),
+	`comment_content` TEXT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --

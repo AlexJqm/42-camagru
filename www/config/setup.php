@@ -9,7 +9,10 @@
 		echo "<script>console.log('SERVER: La base de donnée n\'existe, création en cours...')</script>";
 		$sql_query = file_get_contents('config/db_camagru.sql');
 		try {
-			$db_con->exec($sql_query);
+			$db_con->query($sql_query);
+			mkdir("../uploads/profile_picture", 0777);
+			mkdir("../uploads/post_picture", 0777);
+			copy("public/images/default.png", "../uploads/profile_picture/default.png");
 			echo "<script>console.log('SERVER: Base de données crée.')</script>";
 		}
 		catch (PDOException $e) {

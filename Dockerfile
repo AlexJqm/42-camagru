@@ -1,7 +1,7 @@
 FROM php:7.3-apache
 
 RUN apt-get update && \
-	apt-get -y install -q -y sudo ca-certificates ssmtp
+	apt-get install -y -q --no-install-recommends ssmtp
 
 # php config
 RUN docker-php-ext-install pdo pdo_mysql

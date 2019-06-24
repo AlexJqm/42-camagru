@@ -11,7 +11,8 @@
 	function send_password($customer_email, $customer_token) {
 		$message = "http://192.168.99.100:8080/index.php?new_password=$customer_token&customer_email=$customer_email";
 		$message = wordwrap($message, 70, "\r\n");
-		mail($customer_email, 'Camagru - Reinitialisation du mot de passe', $message, "From: Camagru <sitename@hostname.com> \r\n");
+		if (!(mail($customer_email, 'Camagru - Reinitialisation du mot de passe', $message, "From: Camagru <sitename@hostname.com> \r\n")))
+			exit("error");
 		return (0);
 	}
 ?>
