@@ -30,7 +30,7 @@
 
 - Mail
 	- Validation inscription par mail ✔️
-	- Mot de passe oublié ✖️
+	- Mot de passe oublié ✔️
 
 - Connexion utilisateur
 	- login ✔️
