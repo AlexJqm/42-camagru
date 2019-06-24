@@ -39,7 +39,9 @@ CREATE TABLE `customers` (
 	`customer_fn` VARCHAR(32),
 	`customer_bio` TEXT,
 	`customer_follower` INT,
-	`customer_img` TEXT
+	`customer_img` TEXT,
+	`customer_token` VARCHAR(128),
+	`customer_status` INT DEFAULT 0 NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --

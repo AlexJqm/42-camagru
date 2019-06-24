@@ -6,7 +6,6 @@
 		$picture_name = $_POST['picture_name'];
 		$picture_desc = $_POST['picture_desc'];
 		$picture_filter = $_POST['filter_image'];
-
 		if ($_FILES['userfile']['size'] == NULL)
 			exit ("<script>window.open('../index.php?creation=error','_self')</script>");
 		$picture_img = basename($_FILES['userfile']['tmp_name']) . "." . basename($_FILES['userfile']['type']);

@@ -44,6 +44,9 @@
 			case 'filter':
 				require 'view/filter.php';
 				break;
+			case 'confirm_email':
+				require 'view/confirm_email.php';
+				break;
 			default:
 				require 'view/404.php';
 				break;

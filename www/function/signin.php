@@ -6,13 +6,14 @@
 		$customer_user = $_POST['username'];
 		$customer_password = $_POST['password'];
 
-		$customer_run = $db_con->prepare("SELECT * FROM customers WHERE customer_user = ? AND customer_password = ?");
-		$customer_run->execute(array($customer_user, $customer_password));
+		$customer_run = $db_con->query("SELECT * FROM customers WHERE customer_user = '$customer_user' AND customer_password = '$customer_password'");
 		$customer_check = $customer_run->rowcount();
-		$customer_info = $customer_run->fetch();
+		$customer_row = $customer_run->fetch();
 		if ($customer_check == 0)
 			exit ("<script>window.open('index.php?login=error','_self')</script>");
-		else if ($customer_check == 1) {
+		if ($customer_row['customer_status'] == 0)
+			exit ("<script>window.open('index.php?login=account_disabled','_self')</script>");
+		else if ($customer_check == 1 && $customer_row['customer_status'] == 1) {
 			$_SESSION['customer_user'] = $customer_user;
 			exit ("<script>window.open('index.php','_self')</script>");
 		} else {
