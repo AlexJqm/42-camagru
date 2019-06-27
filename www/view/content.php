@@ -2,6 +2,9 @@
 	<?php
 	require_once('function/like.php');
 	require_once('function/comment.php');
+	require_once('function/auth.php');
+
+	$db_con = db_con();
 
 	if (isset($_GET['content'])) {
 		$content_id = $_GET['content'];
@@ -31,28 +34,34 @@
 			</div>
 			<div class="card-footer">
 				<?php
-					$like_run = $db_con->query("SELECT COUNT(*) FROM likes WHERE customer_user = '$_SESSION[customer_user]'
+					$like_run = $db_con->query("SELECT COUNT(*) FROM likes WHERE customer_user = '$_SESSION[user]'
 												AND like_user = '$picture_author' AND like_bool = '1' AND picture_id = '$picture_id'");
-					if (!$like_run->fetchColumn())
-						echo '<a href="index.php?content=' . $picture_id . '&action=like' . $picture_id . '"><i class="far fa-heart text-light"></i></a>';
+					if (check_auth($_SESSION['user'], $_SESSION['auth'])) {
+						if (!$like_run->fetchColumn())
+							echo '<a href="index.php?content=' . $picture_id . '&action=like' . $picture_id . '"><i class="far fa-heart text-light"></i></a> ';
+						else
+							echo '<a href="index.php?content=' . $picture_id . '&action=unlike' . $picture_id . '"><i class="fas fa-heart text-danger"></i></a> ';
+					}
 					else
-						echo '<a href="index.php?content=' . $picture_id . '&action=unlike' . $picture_id . '"><i class="fas fa-heart text-danger"></i></a>'
-				?>
-				<?php echo print_like($picture_author, $picture_id)[0] ?> Likes
+						echo '<i class="far fa-heart text-light"></i> ';
+					echo print_like($picture_author, $picture_id)[0];
+				?> Likes
 				<p class="float-right"><i class="far fa-comment"></i> <?php echo comment_count($picture_id); ?> Commentaires</p>
+				<span class="float-right mr-2" onclick="window.open('view/share.php?content=<?php echo $picture_id ?>&user=<?php echo $_SESSION['user'] ?>','Patarger','resizable,height=260,width=370');" target="_blank" style="cursor: pointer;"><i class="fas fa-share text-light"></i> Partager</span>
 			</div>
 		</div>
 	</div>
 	<?php
 		}
 		if (isset($_GET['content']) && $_GET['action'] == "like$picture_id") {
-			like($_SESSION['customer_user'], $picture_author, $picture_id);
+			like($_SESSION['user'], $picture_author, $picture_id);
 			exit ("<script>window.open('index.php?content=$picture_id','_self')</script>");
 		} if (isset($_GET['content']) && $_GET['action'] == "unlike$picture_id") {
-			unlike($_SESSION['customer_user'], $picture_author, $picture_id);
+			unlike($_SESSION['user'], $picture_author, $picture_id);
 			exit ("<script>window.open('index.php?content=$picture_id','_self')</script>");
 		}
 	}
+		if (check_auth($_SESSION['user'], $_SESSION['auth'])) {
 	?>
 
 	<form action="" method="POST" enctype="multipart/form-data">
@@ -66,6 +75,7 @@
 	</form>
 
 	<?php
+		}
 		if (isset($_GET['content'])) {
 			$picture_id = $_GET['content'];
 			$content_run = $db_con->query("SELECT * FROM comments, customers WHERE comments.picture_id = '$picture_id' AND customers.customer_user = comments.customer_user ORDER BY comment_id DESC");

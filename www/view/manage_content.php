@@ -1,9 +1,15 @@
+<?php
+	require_once('function/remove_content.php');
+	require_once('function/auth.php');
+	$db_con = db_con();
+
+	if (check_auth($_SESSION['user'], $_SESSION['auth'])) {
+?>
 <div class="container">
 	<table class="table table-borderless table-dark rounded">
 		<tbody>
 		<?php
-			require_once('function/remove_content.php');
-			$content_run = $db_con->query("SELECT * FROM pictures WHERE picture_author = '$_SESSION[customer_user]' ORDER BY picture_id DESC");
+			$content_run = $db_con->query("SELECT * FROM pictures WHERE picture_author = '$_SESSION[user]' ORDER BY picture_id DESC");
 			while ($content_row = $content_run->fetch()) {
 				$picture_id = $content_row['picture_id'];
 				$picture_author = $content_row['picture_author'];
@@ -24,7 +30,7 @@
 			</tr>
 		<?php
 				if (isset($_GET['manage_content']) && $_GET['manage_content'] == "del_$picture_id") {
-					remove_content($_SESSION['customer_user'], $picture_id);
+					remove_content($_SESSION['user'], $picture_id);
 					exit ("<script>window.open('index.php?manage_content','_self')</script>");
 				}
 			}
@@ -32,3 +38,8 @@
 		</tbody>
 	</table>
 </div>
+<?php
+	}
+	else
+		exit ("<script>window.open('index.php?signin','_self')</script>");
+?>

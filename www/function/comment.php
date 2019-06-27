@@ -11,7 +11,7 @@
 
 	if (isset($_POST['send_comment'])) {
 		$db_con = db_con();
-		$customer_user = $_SESSION['customer_user'];
+		$customer_user = $_SESSION['user'];
 		$comment_content = $_POST['comment_content'];
 		$picture_id = $_GET['content'];
 		$comment_run = $db_con->query("SET lc_time_names = 'fr_FR'; INSERT INTO comments (picture_id, customer_user, comment_content, comment_date)

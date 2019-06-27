@@ -1,8 +1,12 @@
 <?php
 	require_once('function/edit_profil.php');
+	require_once('function/auth.php');
 
-	$customer_run = $db_con->query("SELECT * FROM customers WHERE customer_user = '$_SESSION[customer_user]'");
-	$customer_row = $customer_run->fetch();
+	$db_con = db_con();
+
+	if (check_auth($_SESSION['user'], $_SESSION['auth'])) {
+		$customer_run = $db_con->query("SELECT * FROM customers WHERE customer_user = '$_SESSION[user]'");
+		$customer_row = $customer_run->fetch();
 ?>
 <div class="container">
 	<h4 class="mb-3">Image de profil</h4>
@@ -114,3 +118,8 @@
 		</div>
 	</form>
 </div>
+<?php
+	}
+	else
+		exit ("<script>window.open('index.php?signin','_self')</script>");
+?>

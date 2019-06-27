@@ -1,8 +1,16 @@
+<?php
+	include_once('function/connect.php');
+	include_once('function/auth.php');
+
+	$db_con = db_con();
+
+	if (check_auth($_SESSION['user'], $_SESSION['auth'])) {
+?>
 <div class="container">
 	<div class="row text-center">
 <?php
 	$follower_run = $db_con->query("SELECT * FROM customers INNER JOIN followers ON customers.customer_user = followers.customer_user
-									WHERE followers.follower_user = '$_SESSION[customer_user]' AND followers.follower_bool = '1'");
+									WHERE followers.follower_user = '$_SESSION[user]' AND followers.follower_bool = '1'");
 	while ($follower_row = $follower_run->fetch()) {
 ?>
 		<div class="col-sm-4 mb-3">
@@ -32,3 +40,8 @@
 ?>
 	</div>
 </div>
+<?php
+	}
+	else
+		exit ("<script>window.open('index.php?signin','_self')</script>")
+?>

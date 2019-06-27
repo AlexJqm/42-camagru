@@ -17,4 +17,4 @@
 
 		<title>Camagru</title>
 	</head>
-	<body class="text-light pb-5" style="background-color: #212020">
+	<body class="text-light pb-5" style="background-color: #212020; padding-bottom: 0 !important;">

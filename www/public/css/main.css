@@ -21,3 +21,8 @@
 	padding-bottom: 0px !important;
 	height: 48px !important;
 }
+
+a.text-secondary:focus,
+a.text-secondary:hover {
+	color: #6c757d !important;
+}
