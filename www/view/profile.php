@@ -2,6 +2,8 @@
 <?php
 	require_once('function/connect.php');
 	require_once('function/follower.php');
+	require_once('function/comment.php');
+
 	$db_con = db_con();
 	if (isset($_GET['profile'])) {
 		$profile_user = $_GET['profile'];
@@ -73,7 +75,7 @@
 			<div class="card-body">
 				<h5 class="card-title"><?php echo $picture_name ?></h5>
 				<p class="card-text"><?php echo $picture_desc ?></p>
-				<p class="card-text float-right"><small class="text-muted"><?php echo $picture_date ?></small></p>
+				<p class="card-text float-right"><small class="text-muted"><?php echo $picture_date ?></small> <a href="index.php?content=<?php echo $picture_id ?>"><i class="fas fa-external-link-square-alt text-secondary"></i></a></p>
 			</div>
 			<div class="card-footer">
 				<?php
@@ -85,7 +87,7 @@
 						echo '<a href="index.php?profile=' . $profile_user . '&action=unlike' . $picture_id . '"><i class="fas fa-heart text-danger"></i></a>'
 				?>
 				<?php echo print_like($profile_user, $picture_id)[0] ?> Likes
-				<p class="float-right"><i class="far fa-comment"></i> <?php echo $picture_comment ?> Commentaires</p>
+				<a href="index.php?content=<?php echo $picture_id ?>"><p class="float-right text-light"><i class="far fa-comment"></i> <?php echo comment_count($picture_id); ?> Commentaires</p></a>
 			</div>
 		</div>
 	</div>
