@@ -77,9 +77,9 @@
 			$picture_comment = $picture_row['picture_comment'];
 			$picture_filter = $picture_row['picture_filter'];
 ?>
-	<div class="card-group mb-3" style="width: 975px; height: auto;">
+	<div class="card-group mb-3" style="max-width: 975px;">
 		<div class="card text-light bg-dark">
-			<img src="public/images/post_picture/<?php echo $picture_source ?>" class="card-img-top filter-<?php echo $picture_filter ?>" alt="...">
+			<img src="public/images/post_picture/<?php echo $picture_source ?>" class="card-img-top img-fluid filter-<?php echo $picture_filter ?>" alt="...">
 			<div class="card-body">
 				<h5 class="card-title"><?php echo $picture_name ?></h5>
 				<p class="card-text"><?php echo $picture_desc ?></p>
