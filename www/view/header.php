@@ -1,3 +1,10 @@
+<?php
+	$request_uri = explode('?', $_SERVER['REQUEST_URI'], 2);
+	$request_uri = explode('=', $request_uri[1], 2);
+	if (!($request_uri[0] == 'newsfeed' || $request_uri[0] == 'showmore'))
+		$_SESSION['newsfeed'] = 1;
+?>
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="margin-bottom: 50px;">
 	<a class="navbar-brand text-light" href="/">
 		<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="30" height="30" viewBox="0 0 430.117 430.118" style="enable-background:new 0 0 430.117 430.118;" xml:space="preserve" class=""><g><g>
@@ -15,6 +22,9 @@
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" href="index.php?creation"><button type="button" class="btn btn-dark text-secondary">Créer un montage</button></a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="index.php?newsfeed#more"><button type="button" class="btn btn-dark text-secondary">Fil d'actualité</button></a>
 			</li>
 			<?php if ($_SESSION['user'] == NULL) { ?>
 			<li class="nav-item">

@@ -53,6 +53,12 @@
 			case 'new_password':
 					require 'view/new_password.php';
 					break;
+			case 'newsfeed':
+					require 'view/newsfeed.php';
+					break;
+			case 'showmore':
+					require 'function/show_more.php';
+					break;
 			default:
 				require 'view/404.php';
 				break;

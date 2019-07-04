@@ -93,6 +93,7 @@ CREATE TABLE `comments` (
 	`comment_id` INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
 	`picture_id` INT,
 	`customer_user` VARCHAR(32),
+	`comment_user` VARCHAR(32),
 	`comment_content` TEXT,
 	`comment_date` VARCHAR(32),
 	`notif_bool` INT DEFAULT 1 NOT NULL

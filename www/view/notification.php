@@ -15,7 +15,8 @@
 											likes.like_user = pictures.picture_author AND pictures.picture_id = likes.picture_id ORDER BY likes.like_id DESC LIMIT 3");
 			$notif_follower_run = $db_con->query("SELECT * FROM followers, customers WHERE followers.follower_user = '$customer_user' AND
 												followers.customer_user = customers.customer_user ORDER BY followers.follower_id DESC LIMIT 3");
-			$notif_comment_run = $db_con->query("SELECT * FROM comments, pictures WHERE pictures.picture_author = '$customer_user' ORDER BY comments.comment_id DESC LIMIT 3");
+			$notif_comment_run = $db_con->query("SELECT * FROM comments, pictures WHERE pictures.picture_author = '$customer_user' AND comments.comment_user = '$customer_user'
+												 ORDER BY comments.comment_id DESC LIMIT 3");
 			while ($notif_like_row = $notif_like_run->fetch()) {
 		?>
 		<div class="media text-muted pt-3">

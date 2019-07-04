@@ -15,4 +15,12 @@
 			exit("error");
 		return (0);
 	}
+
+	function send_notif($customer_email, $picture_id) {
+		$message = "http://192.168.99.100:8080/index.php?content=$picture_id";
+		$message = wordwrap($message, 70, "\r\n");
+		if (!(mail($customer_email, 'Camagru - Nouveau commentaire', $message, "From: Camagru <sitename@hostname.com> \r\n")))
+			exit("error");
+		return (0);
+	}
 ?>
