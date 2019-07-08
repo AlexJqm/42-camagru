@@ -51,7 +51,7 @@
 		<?php if ($_SESSION['user'] != NULL) { ?>
 		<ul class="navbar-nav">
 			<li class="nav-item dropdown mr-2">
-				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				<a class="nav-link dropdown-toggle text-secondary" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					<button type="button" class="btn btn-dark text-secondary">
 						Mon compte
 					</button>
@@ -61,13 +61,13 @@
 					<a style="background-color: #343a40" class="dropdown-item text-light" href="index.php?followers"><button type="button" class="btn btn-dark text-secondary">Mes followers</button></a>
 					<a style="background-color: #343a40" class="dropdown-item text-light" href="index.php?manage_content"><button type="button" class="btn btn-dark text-secondary">Mon contenu</button></a>
 					<div class="dropdown-divider border-secondary"></div>
-					<a style="background-color: #343a40" class="dropdown-item text-light" href="index.php?logout"><button type="button" class="btn btn-dark text-secondary"><i class="fas fa-sign-out-alt"></i> Deconnexion</button></a>
+					<a style="background-color: #343a40" class="dropdown-item text-light" href="index.php?logout"><button type="button" class="btn btn-dark text-secondary">Deconnexion</button></a>
 				</div>
 			</li>
 			<?php } ?>
 		</ul>
 		<form class="form-inline my-2 my-lg-0" action="" method="GET">
-			<input class="form-control bg-dark mr-sm-2 border-light" type="search" placeholder="Recherche" name="search">
+			<input class="form-control bg-dark text-secondary mr-sm-2 border-secondary" type="search" placeholder="Recherche" name="search">
 			<button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Rechercher</button>
 		</form>
 	</div>

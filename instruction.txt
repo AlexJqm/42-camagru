@@ -1,3 +1,8 @@
 Enabling webcam for localhost website on Chrome:
 	chrome://flags/#unsafely-treat-insecure-origin-as-secure
 	add address to list.
+
+- Proteger input recherche
+- Option desactivation email notif comment
+- Sauvegarder les montages sans publication
+- Affichier les derniers montages cree sur la page creation
