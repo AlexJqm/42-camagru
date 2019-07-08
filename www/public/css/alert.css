@@ -1,0 +1,19 @@
+.alert {
+	animation: alert 0.5s;
+	animation-iteration-count: infinite;
+	opacity: 1;
+}
+
+@keyframes alert {
+	0% {
+		opacity: 1;
+	}
+
+	50% {
+		opacity: .8
+	}
+
+	100% {
+		opacity: 1;
+	}
+}

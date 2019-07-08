@@ -2,7 +2,7 @@
 	$request_uri = explode('?', $_SERVER['REQUEST_URI'], 2);
 	$request_uri = explode('=', $request_uri[1], 2);
 	if (!($request_uri[0] == 'newsfeed' || $request_uri[0] == 'showmore'))
-		$_SESSION['newsfeed'] = 1;
+		$_SESSION['newsfeed'] = 5;
 ?>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="margin-bottom: 50px;">
@@ -21,10 +21,7 @@
 				<a class="nav-link" href="/"><button type="button" class="btn btn-dark text-secondary">Accueil</button></a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="index.php?creation"><button type="button" class="btn btn-dark text-secondary">Créer un montage</button></a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="index.php?newsfeed#more"><button type="button" class="btn btn-dark text-secondary">Fil d'actualité</button></a>
+				<a class="nav-link" href="index.php?newsfeed"><button type="button" class="btn btn-dark text-secondary">Dernières publications</button></a>
 			</li>
 			<?php if ($_SESSION['user'] == NULL) { ?>
 			<li class="nav-item">
@@ -34,6 +31,9 @@
 				<a class="nav-link" href="index.php?signin"><button type="button" class="btn btn-dark text-secondary">Connexion</button></a>
 			</li>
 			<?php } else { ?>
+			<li class="nav-item">
+				<a class="nav-link" href="index.php?creation"><button type="button" class="btn btn-dark text-secondary">Créer un montage</button></a>
+			</li>
 			<li class="nav-item">
 				<a class="nav-link" href="index.php?profile=<?php echo $_SESSION['user'] ?>"><button type="button" class="btn btn-dark text-secondary">Mon profil</button></a>
 			</li>

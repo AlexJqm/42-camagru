@@ -14,6 +14,7 @@
 		<link rel="stylesheet" href="public/css/form_sign.css">
 		<link rel="stylesheet" href="public/css/main.css">
 		<link rel="stylesheet" href="public/css/creation.css">
+		<link rel="stylesheet" href="public/css/alert.css">
 
 		<title>Camagru</title>
 	</head>

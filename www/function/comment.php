@@ -13,7 +13,7 @@
 	if (isset($_POST['send_comment'])) {
 		$db_con = db_con();
 		$customer_user = $_SESSION['user'];
-		$comment_content = $_POST['comment_content'];
+		$comment_content = strip_tags($_POST['comment_content']);
 		$picture_id = $_GET['content'];
 		$picture_run = $db_con->query("SELECT picture_author FROM pictures WHERE picture_id = '$picture_id'");
 		$picture_author = $picture_run->fetchAll();

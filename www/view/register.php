@@ -1,4 +1,5 @@
 <?php require_once('function/register.php'); ?>
+<meta name="google-signin-client_id" content="1061275032212-bqn0tc235e6bbfts5jgb3mfcr7vl8cr4.apps.googleusercontent.com">
 
 <div class="container">
 	<form class="form-signin" action="" method="POST" enctype="multipart/form-data">

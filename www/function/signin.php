@@ -6,7 +6,7 @@
 
 	if (isset($_POST['login'])) {
 		$customer_user = $_POST['username'];
-		$customer_password = $_POST['password'];
+		$customer_password = md5($_POST['password']);
 
 		$customer_run = $db_con->query("SELECT * FROM customers WHERE customer_user = '$customer_user' AND customer_password = '$customer_password'");
 		$customer_check = $customer_run->rowcount();

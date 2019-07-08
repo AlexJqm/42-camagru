@@ -8,6 +8,7 @@
 		$customer_run = $db_con->query("SELECT * FROM customers WHERE customer_user = '$_SESSION[user]'");
 		$customer_row = $customer_run->fetch();
 ?>
+
 <div class="container">
 	<h4 class="mb-3">Image de profil</h4>
 	<form action="" method="POST" enctype="multipart/form-data">
@@ -70,20 +71,20 @@
 		<div class="row">
 			<div class="col-md-6 mb-3">
 				<label for="customer_oldpw">Ancien mot de passe</label>
-				<input type="text" class="form-control bg-dark text-white" name="customer_oldpw" required>
+				<input type="password" class="form-control bg-dark text-white" name="customer_oldpw" required>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-md-6 mb-3">
 				<label for="customer_newpw">Nouveau mot de passe</label>
-				<input type="text" class="form-control bg-dark text-white" name="customer_newpw" required>
+				<input type="password" class="form-control bg-dark text-white" name="customer_newpw" required>
 				<small class="form-text text-muted">
 					Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
 				</small>
 			</div>
 			<div class="col-md-6 mb-3">
 				<label for="customer_newpw2">Confirmation nouveau mot de passe</label>
-				<input type="text" class="form-control bg-dark text-white" name="customer_newpw2" required>
+				<input type="password" class="form-control bg-dark text-white" name="customer_newpw2" required>
 			</div>
 		</div>
 		<div class="row">

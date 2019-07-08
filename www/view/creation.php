@@ -1,4 +1,11 @@
-<?php require_once('function/upload_picture_content.php'); ?>
+<?php
+	require_once('function/upload_picture_content.php');
+	include_once('function/auth.php');
+
+	$db_con = db_con();
+
+	if (check_auth($_SESSION['user'], $_SESSION['auth'])) {
+?>
 
 <div class="container">
 	<h4 class="mb-3 mb-2 text-light" onclick="show_form()">Creer votre montage depuis une <span class="text-warning">image</span> <i class="fas fa-chevron-down"></i></h4>
@@ -183,3 +190,9 @@
 <script src="public/js/webcam.js"></script>
 <script src="public/js/sticker.js"></script>
 <script src="public/js/show_hidden_form.js"></script>
+
+<?php
+	}
+	else
+		exit ("<script>window.open('index.php?signin','_self')</script>")
+?>
